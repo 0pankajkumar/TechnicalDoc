@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
 
+    <link rel="stylesheet" type="text/css" href="style.css">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -27,44 +28,163 @@
 
 
 
-      <a class="nav-link active" id="v-pills-defining-packages-tab" data-toggle="pill" href="#1c" role="tab" aria-controls="v-pills-defining-packages" aria-selected="true">Defining packages</a>
+      <a class="nav-link active" id="v-pills-defining-packages-tab" data-toggle="pill" href="#v-pills-defining-packages" role="tab" aria-controls="v-pills-defining-packages" aria-selected="true">Defining packages</a>
 
-      <a class="nav-link" id="v-pills-defining-functions-tab" data-toggle="pill" href="#2c" role="tab" aria-controls="v-pills-defining-functions" aria-selected="false">Defining functions</a>
+      <a class="nav-link" id="v-pills-defining-functions-tab" data-toggle="pill" href="#v-pills-defining-functions" role="tab" aria-controls="v-pills-defining-functions" aria-selected="false">Defining functions</a>
 
-      <a class="nav-link" id="v-pills-defining-variable-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-defining-variable" aria-selected="false">Defining variable</a>
+      <a class="nav-link" id="v-pills-defining-variable-tab" data-toggle="pill" href="#v-pills-defining-variable" role="tab" aria-controls="v-pills-defining-variable" aria-selected="false">Defining variable</a>
 
-      <a class="nav-link" id="v-pills-comments-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-comments" aria-selected="false">Comments</a>
+      <a class="nav-link" id="v-pills-comments-tab" data-toggle="pill" href="#v-pills-comments" role="tab" aria-controls="v-pills-comments" aria-selected="false">Comments</a>
 
-      <a class="nav-link" id="v-pills-using-string-templates-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-using-string-templates" aria-selected="false">Using string templates</a>
+      <a class="nav-link" id="v-pills-using-string-templates-tab" data-toggle="pill" href="#v-pills-using-string-templates" role="tab" aria-controls="v-pills-using-string-templates" aria-selected="false">Using string templates</a>
 
-      <a class="nav-link" id="v-pills-using-conditional-expressions-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-using-conditional-expressions" aria-selected="false">Using conditional expressions</a>
+      <a class="nav-link" id="v-pills-using-conditional-expressions-tab" data-toggle="pill" href="#v-pills-using-conditional-expressions" role="tab" aria-controls="v-pills-using-conditional-expressions" aria-selected="false">Using conditional expressions</a>
 
-      <a class="nav-link" id="v-pills-using-nullable-values-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-using-nullable-values" aria-selected="false">Using nullable values & checking for null</a>      
+      <a class="nav-link" id="v-pills-using-nullable-values-tab" data-toggle="pill" href="#v-pills-using-nullable-values" role="tab" aria-controls="v-pills-using-nullable-values" aria-selected="false">Using nullable values & checking for null</a>      
 
-      <a class="nav-link" id="v-pills-using-typecheck-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-using-typecheck" aria-selected="false">Using type check & automatic casts</a>
+      <a class="nav-link" id="v-pills-using-typecheck-tab" data-toggle="pill" href="#v-pills-using-typecheck" role="tab" aria-controls="v-pills-using-typecheck" aria-selected="false">Using type check & automatic casts</a>
 
-      <a class="nav-link" id="v-pills-using-a-for-loop-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-using-a-for-loop" aria-selected="false">Using a for loop</a>      
+      <a class="nav-link" id="v-pills-using-a-for-loop-tab" data-toggle="pill" href="#v-pills-using-a-for-loop" role="tab" aria-controls="v-pills-using-a-for-loop" aria-selected="false">Using a for loop</a>      
 
-      <a class="nav-link" id="v-pills-using-a-while-loop-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-using-a-while-loop" aria-selected="false">Using a while loop</a>
+      <a class="nav-link" id="v-pills-using-a-while-loop-tab" data-toggle="pill" href="#v-pills-using-a-while-loop" role="tab" aria-controls="v-pills-using-a-while-loop" aria-selected="false">Using a while loop</a>
 
-      <a class="nav-link" id="v-pills-using-when-expressions-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-using-when-expressions" aria-selected="false">Using when expressions</a>
+      <a class="nav-link" id="v-pills-using-when-expressions-tab" data-toggle="pill" href="#v-pills-using-when-expressions" role="tab" aria-controls="v-pills-using-when-expressions" aria-selected="false">Using when expressions</a>
 
-      <a class="nav-link" id="v-pills-using-ranges-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-using-ranges" aria-selected="false">Using ranges</a>
+      <a class="nav-link" id="v-pills-using-ranges-tab" data-toggle="pill" href="#v-pills-using-ranges" role="tab" aria-controls="v-pills-using-ranges" aria-selected="false">Using ranges</a>
 
-      <a class="nav-link" id="v-pills-using-collections-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-using-collections" aria-selected="false">Using collections</a>
+      <a class="nav-link" id="v-pills-using-collections-tab" data-toggle="pill" href="#v-pills-using-collections" role="tab" aria-controls="v-pills-using-collections" aria-selected="false">Using collections</a>
 
-      <a class="nav-link" id="v-pills-creating-basic-classes-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-creating-basic-classe" aria-selected="false">Creating basic classes & their instances</a>
-
-
+      <a class="nav-link" id="v-pills-creating-basic-classes-tab" data-toggle="pill" href="#v-pills-creating-basic-classes" role="tab" aria-controls="v-pills-creating-basic-classes" aria-selected="false">Creating basic classes & their instances</a>
 
     </div>
   </div>
+
+
+
+
   <div class="col-9">
     <div class="tab-content" id="v-pills-tabContent">
-      <div class="tab-pane fade show active" id="1c" role="tabpanel" aria-labelledby="v-pills-home-tab">.:)..</div>
-      <div class="tab-pane fade" id="2c" role="tabpanel" aria-labelledby="v-pills-profile-tab">..:(.</div>
-      <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">...</div>
-      <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
+      <div class="tab-pane fade show active" id="v-pills-defining-packages" role="tabpanel" aria-labelledby="v-pills-defining-packages-tab">
+        <h2>Defining packages</h2>
+        Package specification should be at the top of the source file:
+        <pre><code class="prettyprint code-box">
+        package my.demo
+        import java.util.*
+        // ...
+        </code></pre>
+        It is not required to match directories and packages: source files can be placed arbitrarily in the file system.
+        See <a href="https://kotlinlang.org/docs/reference/packages.html">Packages</a>.
+      </div>
+
+
+
+
+
+      <div class="tab-pane fade" id="v-pills-defining-functions" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+        <h2>Defining functions</h2>
+        Function having two <mark> Int </mark> parameters with <mark>Int</mark> return type:
+
+        <pre><code class="prettyprint">
+        fun sum(a: Int, b: Int): Int {
+            return a + b
+        }
+
+        fun main() {
+            print("sum of 3 and 5 is ")
+            println(sum(3, 5))
+        }
+        </code></pre>
+
+        Function with an expression body and inferred return type:
+        <pre><code class="prettyprint">
+        fun sum(a: Int, b: Int) = a + b
+
+        fun main() {
+              println("sum of 19 and 23 is ${sum(19, 23)}")
+          }
+        </code></pre>
+
+        Function returning no meaningful value:
+        <pre><code class="prettyprint">
+        fun printSum(a: Int, b: Int): Unit {
+            println("sum of $a and $b is ${a + b}")
+        }
+
+        fun main() {
+            printSum(-1, 8)
+        }
+        </code></pre>
+
+        <mark>Unit</mark> return type can be omitted:
+        <pre><code class="prettyprint">
+        fun printSum(a: Int, b: Int) {
+            println("sum of $a and $b is ${a + b}")
+        }
+
+        fun main() {
+            printSum(-1, 8)
+        }
+        </code></pre>
+        See <a href="https://kotlinlang.org/docs/reference/functions.html">Functions</a>.
+
+      </div>
+
+      <div class="tab-pane fade" id="v-pills-defining-variable" role="tabpanel" aria-labelledby="v-pills-defining-variable-tab">
+        <h2>Defining variables</h2>
+        Assign-once (read-only) local variable:
+        <pre><code class="prettyprint">
+        fun main() {
+            val a: Int = 1  // immediate assignment
+            val b = 2   // `Int` type is inferred
+            val c: Int  // Type required when no initializer is provided
+            c = 3       // deferred assignment
+            println("a = $a, b = $b, c = $c")
+        }
+        </code></pre>
+
+        Mutable variable:
+        <pre><code class="prettyprint">
+        fun main() {
+            var x = 5 // `Int` type is inferred
+            x += 1
+            println("x = $x")
+        }
+        </code></pre>
+
+        Top-level variables:
+        <pre><code class="prettyprint">
+        val PI = 3.14
+        var x = 0
+
+        fun incrementX() { 
+            x += 1 
+        }
+
+        fun main() {
+            println("x = $x; PI = $PI")
+            incrementX()
+            println("incrementX()")
+            println("x = $x; PI = $PI")
+        }
+        </code></pre>
+        See also <a href="https://kotlinlang.org/docs/reference/properties.html"> Properties & fields</a>
+      </div>
+
+
+      <div class="tab-pane fade" id="v-pills-comments" role="tabpanel" aria-labelledby="v-pills-comments-tab">
+        <h2>Comments</h2>
+        Just like Java and JavaScript, Kotlin supports end-of-line and block comments.
+        <pre><code class="prettyprint">
+        // This is an end-of-line comment
+
+        /* This is a block comment
+           on multiple lines. */
+        </code></pre>
+      </div>
+      Unlike Java, block comments in Kotlin can be nested.
+      See <a href="https://kotlinlang.org/docs/reference/kotlin-doc.html">Documenting Kotlin Code</a> for information on the documentation comment syntax.
+
+
     </div>
   </div>
 </div>

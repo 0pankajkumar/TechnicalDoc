@@ -1,4 +1,13 @@
-.side-nav {
-  float: left;
-  display: inline;
+.code-box {
+	background-color: ;
+}
+
+.grey-code {
+	background-color: #DCDCDC;
+	letter-spacing: 1px;
+	font: Liberation Mono,Consolas,Menlo,Courier,Monospace;
+}
+
+mark {
+	font-style: italic;
 }
