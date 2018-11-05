@@ -1,0 +1,14 @@
+#mainBody {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+#nav-bar {
+  height: 100%;
+  top: 0px;
+  align: left;
+  position: fixed;
+  z-index: 1;
+  overfolw-x: hidden;
+}
