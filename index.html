@@ -234,7 +234,7 @@
 
 
     <div class="tab-pane fade" id="v-pills-using-nullable-values" role="tabpanel" aria-labelledby="v-pills-using-nullable-values-tab">
-      <h2>Using nullable values & checking for <em>null<em></h2>
+      <h2>Using nullable values & checking for <em>null</em></h2>
         A reference must be explicitly marked as nullable when <em>null</em> value is possible.
 
         Return <em>null</em> if <mark>str</mark> does not hold an integer:
@@ -310,6 +310,271 @@
 
         See <a href="https://kotlinlang.org/docs/reference/null-safety.html">Null-safety</a>.
     </div>
+
+    <div class="tab-pane fade" id="v-pills-using-typecheck" role="tabpanel" aria-labelledby="v-pills-using-typecheck-tab">
+      <h2>Using type checks and automatic casts</h2>
+      The <mark>is</mark> operator checks if an expression is an instance of a type. If an immutable local variable or property is checked for a specific type, there's no need to cast it explicitly:
+      <pre><code class="prettyprint">
+      fun getStringLength(obj: Any): Int? {
+          if (obj is String) {
+              // `obj` is automatically cast to `String` in this branch
+              return obj.length
+          }
+
+          // `obj` is still of type `Any` outside of the type-checked branch
+          return null
+      }
+
+
+      fun main() {
+          fun printLength(obj: Any) {
+              println("'$obj' string length is ${getStringLength(obj) ?: "... err, not a string"} ")
+          }
+          printLength("Incomprehensibilities")
+          printLength(1000)
+          printLength(listOf(Any()))
+      }
+      </code></pre>
+      or
+      <pre><code class="prettyprint">
+      fun getStringLength(obj: Any): Int? {
+          if (obj !is String) return null
+
+          // `obj` is automatically cast to `String` in this branch
+          return obj.length
+      }
+
+
+      fun main() {
+          fun printLength(obj: Any) {
+              println("'$obj' string length is ${getStringLength(obj) ?: "... err, not a string"} ")
+          }
+          printLength("Incomprehensibilities")
+          printLength(1000)
+          printLength(listOf(Any()))
+      }
+      </code></pre>
+      or even
+      <pre><code class="prettyprint">
+      fun getStringLength(obj: Any): Int? {
+          // `obj` is automatically cast to `String` on the right-hand side of `&&`
+          if (obj is String && obj.length > 0) {
+              return obj.length
+          }
+
+          return null
+      }
+
+
+      fun main() {
+          fun printLength(obj: Any) {
+              println("'$obj' string length is ${getStringLength(obj) ?: "... err, is empty or not a string at all"} ")
+          }
+          printLength("Incomprehensibilities")
+          printLength("")
+          printLength(1000)
+      }
+      </code></pre>
+      See <a href="https://kotlinlang.org/docs/reference/classes.html">classes</a>  & <a href="https://kotlinlang.org/docs/reference/typecasts.html"> Type-casts</a>.
+    </div>
+
+
+    <div class="tab-pane fade" id="v-pills-using-a-for-loop" role="tabpanel" aria-labelledby="v-pills-using-a-for-loop-tab">
+      <h2>Using a for loop</h2>
+    <pre><code class="prettyprint">
+    fun main() {
+        val items = listOf("apple", "banana", "kiwifruit")
+        for (item in items) {
+            println(item)
+        }
+    }
+    </code></pre>
+    or
+    <pre><code class="prettyprint">
+    fun main() {
+        val items = listOf("apple", "banana", "kiwifruit")
+        for (index in items.indices) {
+            println("item at $index is ${items[index]}")
+        }
+    }
+    </code></pre>
+    See <a href="https://kotlinlang.org/docs/reference/control-flow.html#for-loops">for loop</a>.
+    </div>
+
+
+
+    <div class="tab-pane fade" id="v-pills-using-a-while-loop" role="tabpanel" aria-labelledby="v-pills-using-a-while-loop-tab">
+      <h2>Using a while loop</h2>
+      <pre><code class="prettyprint">
+      fun main() {
+          val items = listOf("apple", "banana", "kiwifruit")
+          var index = 0
+          while (index < items.size) {
+              println("item at $index is ${items[index]}")
+              index++
+          }
+      }
+      </code></pre>
+      See <a href="https://kotlinlang.org/docs/reference/control-flow.html#while-loops">while loop</a>.
+    </div>
+
+
+
+    <div class="tab-pane fade" id="v-pills-using-when-expressions" role="tabpanel" aria-labelledby="v-pills-using-when-expressions-tab">
+          <h2>Using when expressions</h2>
+      <pre><code class="prettyprint">
+      fun describe(obj: Any): String =
+          when (obj) {
+              1          -> "One"
+              "Hello"    -> "Greeting"
+              is Long    -> "Long"
+              !is String -> "Not a string"
+              else       -> "Unknown"
+          }
+
+      fun main() {
+          println(describe(1))
+          println(describe("Hello"))
+          println(describe(1000L))
+          println(describe(2))
+          println(describe("other"))
+      }
+      </code></pre>
+      See <a href="https://kotlinlang.org/docs/reference/control-flow.html#when-expression">when expression</a>.
+    </div>
+
+
+
+    <div class="tab-pane fade" id="v-pills-using-ranges" role="tabpanel" aria-labelledby="v-pills-using-ranges-tab">
+          <h2>Using ranges</h2>
+          Check if a number is within a range using in operator:
+    <pre><code class="prettyprint">
+    fun main() {
+        val x = 10
+        val y = 9
+        if (x in 1..y+1) {
+            println("fits in range")
+        }
+    }
+    </code></pre>
+    Check if a number is out of range:
+    <pre><code class="prettyprint">
+    fun main() {
+        val list = listOf("a", "b", "c")
+
+        if (-1 !in 0..list.lastIndex) {
+            println("-1 is out of range")
+        }
+        if (list.size !in list.indices) {
+            println("list size is out of valid list indices range, too")
+        }
+    }
+    </code></pre>
+    Iterating over a range:
+    <pre><code class="prettyprint">
+    fun main() {
+        for (x in 1..5) {
+            print(x)
+        }
+    }
+    </code></pre>
+    or over a progression:
+    <pre><code class="prettyprint">
+    fun main() {
+        for (x in 1..10 step 2) {
+            print(x)
+        }
+        println()
+        for (x in 9 downTo 0 step 3) {
+            print(x)
+        }
+    }
+    </code></pre>
+    See <a href="https://kotlinlang.org/docs/reference/ranges.html">Ranges</a>.
+    </div>
+
+
+
+    <div class="tab-pane fade" id="v-pills-using-collections" role="tabpanel" aria-labelledby="v-pills-using-collections-tab">
+          <h2>Using collections</h2>
+          Iterating over a collection:
+    <pre><code class="prettyprint">
+    fun main() {
+        val items = listOf("apple", "banana", "kiwifruit")
+        for (item in items) {
+            println(item)
+        }
+    }
+    </code></pre>
+    Checking if a collection contains an object using <mark>in</mark> operator:
+    <pre><code class="prettyprint">
+    fun main() {
+        val items = setOf("apple", "banana", "kiwifruit")
+        when {
+            "orange" in items -> println("juicy")
+            "apple" in items -> println("apple is fine too")
+        }
+    }
+    </code></pre>
+    Using lambda expressions to filter and map collections:
+    <pre><code class="prettyprint">
+    fun main() {
+      val fruits = listOf("banana", "avocado", "apple", "kiwifruit")
+      fruits
+        .filter { it.startsWith("a") }
+        .sortedBy { it }
+        .map { it.toUpperCase() }
+        .forEach { println(it) }
+    }
+    </code></pre>
+    See <a href="https://kotlinlang.org/docs/reference/lambdas.html">Higher-order functions and Lambdas</a>.
+    </div>
+
+
+
+<div class="tab-pane fade" id="v-pills-creating-basic-classes" role="tabpanel" aria-labelledby="v-pills-creating-basic-classes-tab">
+      <h2>Creating basic classes</h2>
+<pre><code class="prettyprint">
+fun main() {
+
+    println("Area of rectangle is ${rectangle.calculateArea()}, its perimeter is ${rectangle.perimeter}")
+    println("Area of triangle is ${triangle.calculateArea()}, its perimeter is ${triangle.perimeter}")
+}
+
+abstract class Shape(val sides: List &ltDouble&gt) {
+    val perimeter: Double get() = sides.sum()
+    abstract fun calculateArea(): Double
+}
+
+interface RectangleProperties {
+    val isSquare: Boolean
+}
+
+class Rectangle(
+    var height: Double,
+    var length: Double
+) : Shape(listOf(height, length, height, length)), RectangleProperties {
+    override val isSquare: Boolean get() = length == height
+    override fun calculateArea(): Double = height * length
+}
+
+class Triangle(
+    var sideA: Double,
+    var sideB: Double,
+    var sideC: Double
+) : Shape(listOf(sideA, sideB, sideC)) {
+    override fun calculateArea(): Double {
+        val s = perimeter / 2
+        return Math.sqrt(s * (s - sideA) * (s - sideB) * (s - sideC))
+    }
+}
+</code></pre>
+See <a href="https://kotlinlang.org/docs/reference/classes.html">classes</a> and <a href="https://kotlinlang.org/docs/reference/object-declarations.html">objects and instances</a>.
+    </div>
+
+
+
+
 
 
   </div>
