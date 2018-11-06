@@ -8,6 +8,12 @@
 	font: Liberation Mono,Consolas,Menlo,Courier,Monospace;
 }
 
+.square {
+	width: 500px;
+	height: auto;
+	background-color: red;
+}
+
 mark {
 	font-style: italic;
 }

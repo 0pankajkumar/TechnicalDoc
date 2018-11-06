@@ -19,14 +19,16 @@
 <body>
 
 
-<div class="row">
-  <div class="col-3">
-    <div class="nav flex-column nav-pills nav-fill" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 
+<div class="row nav-stacked affix">
+  <div class="col-xs-2 left">
+    <div class="nav flex-column nav-pills nav-fill" id="v-pills-tab" role="tablist" aria-orientation="vertical" >
 
-
-
-
+        <a class="navbar-brand" href="#">
+        <img src="https://logos-download.com/wp-content/uploads/2016/10/Kotlin_logo-700x700.png" width="30" height="30" class="d-inline-block align-top" alt="Kotlin">
+        Kotlin basics
+      </a>
+      
 
       <a class="nav-link active" id="v-pills-defining-packages-tab" data-toggle="pill" href="#v-pills-defining-packages" role="tab" aria-controls="v-pills-defining-packages" aria-selected="true">Defining packages</a>
 
@@ -180,12 +182,136 @@
         /* This is a block comment
            on multiple lines. */
         </code></pre>
-      </div>
-      Unlike Java, block comments in Kotlin can be nested.
-      See <a href="https://kotlinlang.org/docs/reference/kotlin-doc.html">Documenting Kotlin Code</a> for information on the documentation comment syntax.
-
-
+        Unlike Java, block comments in Kotlin can be nested.
+        See <a href="https://kotlinlang.org/docs/reference/kotlin-doc.html">Documenting Kotlin Code</a> for information on the documentation comment syntax.
     </div>
+
+
+    <div class="tab-pane fade" id="v-pills-using-string-templates" role="tabpanel" aria-labelledby="v-pills-using-string-templates-tab">
+      <h2>Using string templates</h2>
+      See more <a href="https://kotlinlang.org/docs/reference/basic-types.html#string-templates">String templates</a>
+      <pre><code class="prettyprint">
+      fun main() {
+          var a = 1
+          // simple name in template:
+          val s1 = "a is $a" 
+
+          a = 2
+          // arbitrary expression in template:
+          val s2 = "${s1.replace("is", "was")}, but now is $a"
+          println(s2)
+      }
+      </code></pre>
+    </div>
+
+    <div class="tab-pane fade" id="v-pills-using-conditional-expressions" role="tabpanel" aria-labelledby="v-pills-using-conditional-expressions-tab">
+    <h2>Using conditional expressions</h2>
+
+    <pre><code class="prettyprint">
+    fun maxOf(a: Int, b: Int): Int {
+        if (a > b) {
+            return a
+        } else {
+            return b
+        }
+    }
+
+    fun main() {
+        println("max of 0 and 42 is ${maxOf(0, 42)}")
+    }
+    </code></pre>
+
+    Using <mark>if</mark> as an expression:
+    <pre><code class="prettyprint">
+    fun maxOf(a: Int, b: Int) = if (a > b) a else b
+
+    fun main() {
+        println("max of 0 and 42 is ${maxOf(0, 42)}")
+    }
+    </code></pre>
+    See <a href="https://kotlinlang.org/docs/reference/control-flow.html#if-expression">If-expressions</a>.
+    </div>
+
+
+    <div class="tab-pane fade" id="v-pills-using-nullable-values" role="tabpanel" aria-labelledby="v-pills-using-nullable-values-tab">
+      <h2>Using nullable values & checking for <em>null<em></h2>
+        A reference must be explicitly marked as nullable when <em>null</em> value is possible.
+
+        Return <em>null</em> if <mark>str</mark> does not hold an integer:
+
+
+        <pre><code class="prettyprint">
+        fun parseInt(str: String): Int? {
+            // ...
+        }
+        </code></pre>
+
+        Use a function returning nullable value:
+
+        <pre><code class="prettyprint">
+        fun parseInt(str: String): Int? {
+            return str.toIntOrNull()
+        }
+
+        fun printProduct(arg1: String, arg2: String) {
+            val x = parseInt(arg1)
+            val y = parseInt(arg2)
+
+            // Using `x * y` yields error because they may hold nulls.
+            if (x != null && y != null) {
+                // x and y are automatically cast to non-nullable after null check
+                println(x * y)
+            }
+            else {
+                println("either '$arg1' or '$arg2' is not a number")
+            }    
+        }
+
+
+        fun main() {
+            printProduct("6", "7")
+            printProduct("a", "7")
+            printProduct("a", "b")
+        }
+        </code></pre>
+
+        or
+
+
+        <pre><code class="prettyprint">
+        un parseInt(str: String): Int? {
+            return str.toIntOrNull()
+        }
+
+        fun printProduct(arg1: String, arg2: String) {
+            val x = parseInt(arg1)
+            val y = parseInt(arg2)
+            
+            // ...
+            if (x == null) {
+                println("Wrong number format in arg1: '$arg1'")
+                return
+            }
+            if (y == null) {
+                println("Wrong number format in arg2: '$arg2'")
+                return
+            }
+
+            // x and y are automatically cast to non-nullable after null check
+            println(x * y)
+        }
+
+        fun main() {
+            printProduct("6", "7")
+            printProduct("a", "7")
+            printProduct("99", "b")
+        }
+        </code></pre>
+
+        See <a href="https://kotlinlang.org/docs/reference/null-safety.html">Null-safety</a>.
+    </div>
+
+
   </div>
 </div>
 
